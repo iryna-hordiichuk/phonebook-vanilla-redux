@@ -3,7 +3,7 @@ import { ContactItem } from 'components/ContactItem';
 import { List } from './ContactList.styled';
 
 export const ContactList = ( {contacts, onDeleteContact} ) => {
-    console.log(contacts);
+    // console.log(contacts);
   return (
     <List>
       {contacts.map(({id,name,number} )=> (
