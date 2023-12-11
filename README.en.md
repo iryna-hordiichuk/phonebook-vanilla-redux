@@ -1,2 +1,0 @@
-# phonebook-vanilla-redux
-
