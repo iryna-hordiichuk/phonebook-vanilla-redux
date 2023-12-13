@@ -1,10 +1,14 @@
+import {useSelector, useDispatch} from 'react-redux';
+import {setFilter} from "../../redux/actions";
 import { Container } from 'components/Container';
 import { FilterInput, FilterLabel } from './Filter.styled';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
-export const Filter = ({ value, onChange, icon: Icon = null }) => {
+export const Filter = ({icon: Icon = null }) => {
   const idForFilter = nanoid();
+  const dispatch = useDispatch();
+  const filter = useSelector(state => state.filter);
 
   return (
     <Container
@@ -16,8 +20,8 @@ export const Filter = ({ value, onChange, icon: Icon = null }) => {
       <FilterLabel htmlFor={idForFilter}>{<Icon size={16} />} Find contacts by name</FilterLabel>
       <FilterInput
         type="text"
-        value={value}
-        onChange={onChange}
+        value={filter}
+        onChange={e => dispatch(setFilter(e.target.value))}
         id={idForFilter}
       />
     </Container>
