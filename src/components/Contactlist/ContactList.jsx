@@ -4,6 +4,7 @@ import { List } from './ContactList.styled';
 
 export const ContactList = () => {
   const contacts = useSelector(state => state.contacts);
+  console.log(contacts);
   const filter = useSelector(state => state.filter);
 
   const getVisibleContacts = () => {
@@ -14,11 +15,12 @@ export const ContactList = () => {
   };
 
   const visibleContacts = getVisibleContacts();
+  console.log(visibleContacts);
 
   return (
     <List>
-      {visibleContacts.map(({id,name,number} )=> (
-        <ContactItem key={id} name={name} number={number}/>
+      {visibleContacts.map(({id, name,number} )=> (
+        <ContactItem key={id} name={name} number={number} id={id}/>
       ))}
     </List>
   );
