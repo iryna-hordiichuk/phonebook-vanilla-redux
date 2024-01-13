@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/actions';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { selectContacts } from '../../redux/selectors';
 
 import {
   ContactForm,
@@ -12,6 +13,7 @@ import {
   Button,
   FormError,
 } from './ContactForm.styled';
+
 
 // validation schema, валідація форм, схоже як валідація пропсів (library PropTypes)
 // посилання на обєкт schema кладемо у Formik на спеціальний проп validationSchema
@@ -28,7 +30,7 @@ const initialValues = {
 
 export const Form = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = (values,{ resetForm }) => {
     const {name, number} = values;
